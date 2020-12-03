@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Add Classroom</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center">Add Classroom</h1>
+</div>
+
+<!-- Div blocks for choosing type of classroom -->
+<form action="/add-classroom" method="post">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="classroomtype">Type of Classroom</label>
+      </div>
+      <select class="custom-select" id="classroomtype">
+        <option value="lab">Lab</option>
+        <option value="lectureclass">Lecture class</option>
+      </select>
+    </div>
+    <!-- Enter classroom name with building i.e. A202
+      -->
+    <div class="form-group row">
+    <label for="roomnumber" class="col-sm-2 col-form-label">Enter room number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="roomnumber" placeholder="i.e. A101">
+    </div>
+  </div>
+
+  <div>
+      <button class="btn btn-success" type="submit">Save</button>
+  </div>
+</form>
+{% endblock %}

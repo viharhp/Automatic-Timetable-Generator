@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Add Faculty</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center" >Add Faculty</h1>
+</div>
+
+<!-- Div blocks for adding faculty name -->
+<form action="/add-faculty" method="post">
+    <div class="form-group row">
+    <label for="facultyname" class="col-sm-2 col-form-label">Faculty Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="facultyname" placeholder="Enter Faculty name">
+    </div>
+  </div>
+  <!-- Div blocks for selecting subject
+    <option value={-{-}}"subject.subjectname" default>3</option>
+-->
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="choosesubject">Choose Subject</label>
+      </div>
+      <select class="custom-select" id="choosesubject">
+        <option value="subject1">Subject 1</option>
+        <option value="subject2">Subject 2</option>
+      </select>
+    </div>
+
+  <div>
+      <button class="btn btn-success" type="submit">Save</button>
+  </div>
+</form>
+{% endblock %}
