@@ -15,8 +15,8 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="choosesemester">Choose Semester</label>
       </div>
-      <select class="custom-select" id="choosesemester">
-        <option value="3" default>3</option>
+      <select class="custom-select" name="choosesemester" id="choosesemester">
+        <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
@@ -28,13 +28,19 @@
     <div class="form-group row">
     <label for="subjectname" class="col-sm-2 col-form-label">Subject Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="subjectname" placeholder="Enter subject name">
+      <input type="text" class="form-control" name="subjectname" id="subjectname" placeholder="Enter subject name">
     </div>
   </div>
   <div class="form-group row">
     <label for="subjectcode" class="col-sm-2 col-form-label">Subject Code</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="subjectcode" placeholder="Enter subject code">
+      <input type="number" class="form-control" name="subjectcode" id="subjectcode" placeholder="Enter subject code">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="subjectcode" class="col-sm-2 col-form-label">Subject Credits</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" name="subjectcredits" id="subjectcredits" placeholder="Enter subject credits">
     </div>
   </div>
   <div>

@@ -12,9 +12,9 @@
 <!-- Div blocks for adding faculty name -->
 <form action="/add-faculty" method="post">
     <div class="form-group row">
-    <label for="facultyname" class="col-sm-2 col-form-label">Faculty Name</label>
+    <label for="facultyname" class="col-sm-2 col-form-label">Faculty Name :</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="facultyname" placeholder="Enter Faculty name">
+      <input type="text" class="form-control" id="faculty_name" placeholder="Enter Faculty name">
     </div>
   </div>
   <!-- Div blocks for selecting subject
@@ -22,14 +22,19 @@
 -->
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <label class="input-group-text" for="choosesubject">Choose Subject</label>
+        <label class="input-group-text" for="faculty_subject1">Choose Subject :</label>
       </div>
-      <select class="custom-select" id="choosesubject">
+      <select class="custom-select" id="faculty_subject1">
         <option value="subject1">Subject 1</option>
         <option value="subject2">Subject 2</option>
       </select>
     </div>
-
+    <div class="form-group row">
+      <label for="faculty_hours" class="col-sm-2 col-form-label">Working hours :</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="faculty_hours" placeholder="Enter working hours">
+      </div>
+    </div>
   <div>
       <button class="btn btn-success" type="submit">Save</button>
   </div>
