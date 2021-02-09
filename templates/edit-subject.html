@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Add Subject</title>
+<title>Edit Subject</title>
 {% endblock %}
 
 {% block body %}
 <div class="container">
-    <h1 style="text-align:center" >Add Subject</h1>
+    <h1 style="text-align:center" >Edit Subject</h1>
 </div>
 
 <!-- Div blocks for selecting semester, adding subject name and code -->
-<form action="/add-subject" method="post">
+<form action="/edit/subject/{{subject.id}}" method="post">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label class="input-group-text" for="choosesemester">Choose Semester</label>
@@ -28,43 +28,23 @@
     <div class="form-group row">
     <label for="subjectname" class="col-sm-2 col-form-label">Subject Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="subjectname" id="subjectname" placeholder="Enter subject name" required>
+      <input type="text" class="form-control" name="subjectname" id="subjectname" value="{{subject.sub_name}}" required>
     </div>
   </div>
   <div class="form-group row">
     <label for="subjectcode" class="col-sm-2 col-form-label">Subject Code</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" name="subjectcode" id="subjectcode" placeholder="Enter subject code" required>
+      <input type="number" class="form-control" name="subjectcode" id="subjectcode" value="{{subject.sub_code}}" required>
     </div>
   </div>
   <div class="form-group row">
     <label for="subjectcode" class="col-sm-2 col-form-label">Subject Credits</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" name="subjectcredits" id="subjectcredits" placeholder="Enter subject credits" required>
+      <input type="number" class="form-control" name="subjectcredits" id="subjectcredits" value="{{subject.sub_credits}}" required>
     </div>
   </div>
   <div>
       <button class="btn btn-success" type="submit">Save</button>
   </div>
 </form>
-
-
-<div class="container">
-    <hr>
-    <h3>Subject List</h3>
-    <br>
-    {% for subject in subjects %}
-        <div class="row">
-            <div class="column">
-                <b>Name : </b>{{subject.sub_name}}
-                <b>Semester: </b> {{subject.sub_sem}}
-                <b>Code: </b> {{subject.sub_code}}
-                <b>Credits: </b>{{subject.sub_credits}}
-                <a class="btn btn-primary" href="/edit/subject/{{subject.id}}" >Edit</a>
-                <a class="btn btn-danger" href="/edit/subject/{{subject.id}}" >Delete</a>
-                <hr>
-            </div>
-        </div>
-    {% endfor %}
-</div>
 {% endblock %}

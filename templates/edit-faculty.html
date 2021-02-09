@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Add Faculty</title>
+<title>Edit Faculty</title>
 {% endblock %}
 
 {% block body %}
 <div class="container">
-    <h1 style="text-align:center" >Add Faculty</h1>
+    <h1 style="text-align:center" >Edit Faculty</h1>
 </div>
 
-<!-- Div blocks for adding faculty name -->
-<form action="/add-faculty" method="post">
+<!-- Div blocks for selecting semester, adding subject name and code -->
+<form action="/edit/faculty/{{faculty.id}}" method="post">
     <div class="form-group row">
     <label for="faculty_name" class="col-sm-2 col-form-label">Faculty Name :</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="faculty_name" id="faculty_name" placeholder="Enter Faculty name" required>
+      <input type="text" class="form-control" name="faculty_name" id="faculty_name" placeholder="{{faculty.faculty_name}}" required>
     </div>
   </div>
 
     <div class="form-group row">
       <label for="faculty_hours" class="col-sm-2 col-form-label">Working hours(week) :</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" name="faculty_hours" id="faculty_hours" placeholder="Enter working hours" required>
+        <input type="number" class="form-control" name="faculty_hours" id="faculty_hours" placeholder="{{faculty.faculty_hours}}" required>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         <label class="input-group-text" for="faculty_subject1">Subject 1 :</label>
       </div>
       <select class="custom-select" name="faculty_subject1" id="faculty_subject1">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject1}}">{{faculty.faculty_subject1}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -47,7 +47,7 @@
         <label class="input-group-text" for="faculty_subject2">Subject 2 :</label>
       </div>
       <select class="custom-select" name="faculty_subject2" id="faculty_subject2">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject2}}">{{faculty.faculty_subject2}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -59,7 +59,7 @@
         <label class="input-group-text" for="faculty_subject3">Subject 3 :</label>
       </div>
       <select class="custom-select" name="faculty_subject3" id="faculty_subject3">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject3}}">{{faculty.faculty_subject3}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -71,7 +71,7 @@
         <label class="input-group-text" for="faculty_subject4">Subject 4 :</label>
       </div>
       <select class="custom-select" name="faculty_subject4" id="faculty_subject4">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject4}}">{{faculty.faculty_subject4}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -83,7 +83,7 @@
         <label class="input-group-text" for="faculty_subject5">Subject 5 :</label>
       </div>
       <select class="custom-select" name="faculty_subject5" id="faculty_subject5">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject5}}">{{faculty.faculty_subject5}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -95,7 +95,7 @@
         <label class="input-group-text" for="faculty_subject6">Subject 6 :</label>
       </div>
       <select class="custom-select" name="faculty_subject6" id="faculty_subject6">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject6}}">{{faculty.faculty_subject6}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -107,7 +107,7 @@
         <label class="input-group-text" for="faculty_subject7">Subject 7 :</label>
       </div>
       <select class="custom-select" name="faculty_subject7" id="faculty_subject7">
-          <option default value="none">None</option>
+        <option default value="{{faculty.faculty_subject7}}">{{faculty.faculty_subject7}}</option>
         {% for subject in subjects %}
           <option value="{{subject.sub_name}}">{{ subject.sub_name }}</option>
         {% endfor %}
@@ -120,21 +120,4 @@
       <button class="btn btn-success" type="submit">Save</button>
   </div>
 </form>
-
-
-<div class="container">
-    <hr>
-    <h3>Faculty List</h3>
-    <br>
-    {% for faculty in faculties %}
-        <div class="row">
-            <div class="column">
-                {{faculty.faculty_name}}
-                <a class="btn btn-primary" href="/edit/faculty/{{faculty.faculty_id}}" >Edit</a>
-                <a class="btn btn-danger" href="/edit/faculty/{{faculty.faculty_id}}" >Delete</a>
-                <hr>
-            </div>
-        </div>
-    {% endfor %}
-</div>
 {% endblock %}
