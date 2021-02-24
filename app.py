@@ -76,6 +76,13 @@ def edit_subject(id):
     else:
         return render_template('edit-subject.html', subject = subject)
 
+@app.route('/delete/subject/<int:id>', methods=['GET','DELETE'])
+def delete_subject(id):
+    del_subject = Subject.query.get_or_404(id)
+    db.session.delete(del_subject)
+    db.session.commit()
+    return redirect('/add-subject')
+
 @app.route('/add-classroom', methods=['GET','POST'])
 def add_classroom():
     if request.method == "POST":
@@ -89,7 +96,7 @@ def add_classroom():
         all_classroom = Classroom.query.order_by(Classroom.class_id).all()
         return render_template('add-classroom.html', classrooms = all_classroom) # to use in loops
 
-@app.route('/edit/classroom/<int:id>', methods=['GET','POST'])
+@app.route('/edit/classroom/<int:id>', methods=['GET','POST','DELETE'])
 def edit_classroom(id):
     classroom = Classroom.query.get_or_404(id)
     if request.method == "POST":
@@ -99,6 +106,13 @@ def edit_classroom(id):
         return redirect('/add-classroom')
     else:
         return render_template('edit-classroom.html', classroom = classroom)
+
+@app.route('/delete/classroom/<int:id>', methods=['GET','DELETE'])
+def delete_classroom(id):
+    del_classroom = Classroom.query.get_or_404(id)
+    db.session.delete(del_classroom)
+    db.session.commit()
+    return redirect('/add-classroom')
 
 @app.route('/add-faculty', methods=['GET','POST'])
 def add_faculty():
@@ -139,6 +153,14 @@ def edit_faculty(id):
     else:
         subjects = Subject.query.order_by(Subject.id).all()
         return render_template('edit-faculty.html', faculty = faculty, subjects = subjects)
+
+
+@app.route('/delete/faculty/<int:id>', methods=['GET','DELETE'])
+def delete_faculty(id):
+    del_faculty = Faculty.query.get_or_404(id)
+    db.session.delete(del_faculty)
+    db.session.commit()
+    return redirect('/add-faculty')
 
 @app.route('/generate')
 def generate():

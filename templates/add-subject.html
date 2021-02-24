@@ -16,6 +16,8 @@
         <label class="input-group-text" for="choosesemester">Choose Semester</label>
       </div>
       <select class="custom-select" name="choosesemester" id="choosesemester">
+        <option value="1">1</option>
+        <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
@@ -61,7 +63,7 @@
                 <b>Code: </b> {{subject.sub_code}}
                 <b>Credits: </b>{{subject.sub_credits}}
                 <a class="btn btn-primary" href="/edit/subject/{{subject.id}}" >Edit</a>
-                <a class="btn btn-danger" href="/edit/subject/{{subject.id}}" >Delete</a>
+                <a class="btn btn-danger" href="/delete/subject/{{subject.id}}" >Delete</a>
                 <hr>
             </div>
         </div>

@@ -17,7 +17,7 @@
       </div>
       <select class="custom-select" name="classroomtype" id="classroomtype">
         <option value="lab">Lab</option>
-        <option value="lecture">Lecture class</option>
+        <option value="lecture">Lecture</option>
       </select>
     </div>
     <!-- Enter classroom name with building i.e. A202
@@ -44,7 +44,7 @@
                 <b>Classroom : </b>{{classroom.class_number}}
                 <b>Type: </b> {{classroom.class_type}}
                 <a class="btn btn-primary" href="/edit/classroom/{{classroom.class_id}}" >Edit</a>
-                <a class="btn btn-danger" href="/edit/classroom/{{classroom.class_id}}" >Delete</a>
+                <a class="btn btn-danger" href="/delete/classroom/{{classroom.class_id}}">Delete</a>
                 <hr>
             </div>
         </div>

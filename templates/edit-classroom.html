@@ -15,9 +15,10 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="classroomtype">Type of Classroom</label>
       </div>
-      <select class="custom-select" name="classroomtype" id="classroomtype" value="{{classroom.class_type}}">
+      <select class="custom-select" name="classroomtype" id="classroomtype" >
+        <option default value="{{classroom.class_type}}">{{classroom.class_type}}</option>
         <option value="lab">Lab</option>
-        <option value="lecture">Lecture class</option>
+        <option value="lecture">Lecture</option>
       </select>
     </div>
     <!-- Enter classroom name with building i.e. A202
