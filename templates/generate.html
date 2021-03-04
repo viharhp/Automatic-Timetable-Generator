@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Timetable</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center" >Timetable</h1>
+</div>
+
+<!-- Div blocks for adding faculty name -->
+<form action="/add-faculty" method="post">
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Timing</th>
+                <th>A3</th>
+                <th>B3</th>
+                <th>C3</th>
+                <th>A5</th>
+                <th>B5</th>
+                <th>C5</th>
+                <th>A7</th>
+                <th>B7</th>
+                <th>C7</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% set counter = times|length - 1 %}
+
+                <th rowspan="7">Monday</th>
+                {% for monday in mondays %}
+                <tr>
+                    {% if loop.index0 == 0 %}
+                        <td>{{times[counter].lec1}}</td>
+                    {% elif loop.index0 == 1 %}
+                        <td>{{times[counter].lec2}}</td>
+                    {% elif loop.index0 == 2 %}
+                        <td>{{times[counter].lec3}}</td>
+                    {% elif loop.index0 == 3 %}
+                        <td>{{times[counter].lec4}}</td>
+                    {% elif loop.index0 == 4 %}
+                        <td>{{times[counter].lec5}}</td>
+                    {% else %}
+                        <td>{{times[counter].lec6}}</td>
+                    {% endif %}
+                    <td>{{monday.a3}}</td>
+                    <td>{{monday.b3}}</td>
+                    <td>{{monday.c3}}</td>
+                    <td>{{monday.a5}}</td>
+                    <td>{{monday.b5}}</td>
+                    <td>{{monday.c5}}</td>
+                    <td>{{monday.a7}}</td>
+                    <td>{{monday.b7}}</td>
+                    <td>{{monday.c7}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            <tbody>
+                <th rowspan="7">Tuesday</th>
+                {% for tuesday in tuesdays %}
+                <tr>
+                    {% if loop.index0 == 0 %}
+                        <td>{{times[counter].lec1}}</td>
+                    {% elif loop.index0 == 1 %}
+                        <td>{{times[counter].lec2}}</td>
+                    {% elif loop.index0 == 2 %}
+                        <td>{{times[counter].lec3}}</td>
+                    {% elif loop.index0 == 3 %}
+                        <td>{{times[counter].lec4}}</td>
+                    {% elif loop.index0 == 4 %}
+                        <td>{{times[counter].lec5}}</td>
+                    {% else %}
+                        <td>{{times[counter].lec6}}</td>
+                    {% endif %}
+                <td>{{tuesday.a3}}</td>
+                <td>{{tuesday.b3}}</td>
+                <td>{{tuesday.c3}}</td>
+                <td>{{tuesday.a5}}</td>
+                <td>{{tuesday.b5}}</td>
+                <td>{{tuesday.c5}}</td>
+                <td>{{tuesday.a7}}</td>
+                <td>{{tuesday.b7}}</td>
+                <td>{{tuesday.c7}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tbody>
+                <th rowspan="7">Wednesday</th>
+                {% for wednesday in wednesdays %}
+                <tr>
+                    {% if loop.index0 == 0 %}
+                        <td>{{times[counter].lec1}}</td>
+                    {% elif loop.index0 == 1 %}
+                        <td>{{times[counter].lec2}}</td>
+                    {% elif loop.index0 == 2 %}
+                        <td>{{times[counter].lec3}}</td>
+                    {% elif loop.index0 == 3 %}
+                        <td>{{times[counter].lec4}}</td>
+                    {% elif loop.index0 == 4 %}
+                        <td>{{times[counter].lec5}}</td>
+                    {% else %}
+                        <td>{{times[counter].lec6}}</td>
+                    {% endif %}
+                <td>{{wednesday.a3}}</td>
+                <td>{{wednesday.b3}}</td>
+                <td>{{wednesday.c3}}</td>
+                <td>{{wednesday.a5}}</td>
+                <td>{{wednesday.b5}}</td>
+                <td>{{wednesday.c5}}</td>
+                <td>{{wednesday.a7}}</td>
+                <td>{{wednesday.b7}}</td>
+                <td>{{wednesday.c7}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tbody>
+                <th rowspan="7">Thursday</th>
+                {% for thursday in thursdays %}
+                <tr>
+                    {% if loop.index0 == 0 %}
+                        <td>{{times[counter].lec1}}</td>
+                    {% elif loop.index0 == 1 %}
+                        <td>{{times[counter].lec2}}</td>
+                    {% elif loop.index0 == 2 %}
+                        <td>{{times[counter].lec3}}</td>
+                    {% elif loop.index0 == 3 %}
+                        <td>{{times[counter].lec4}}</td>
+                    {% elif loop.index0 == 4 %}
+                        <td>{{times[counter].lec5}}</td>
+                    {% else %}
+                        <td>{{times[counter].lec6}}</td>
+                    {% endif %}
+                <td>{{thursday.a3}}</td>
+                <td>{{thursday.b3}}</td>
+                <td>{{thursday.c3}}</td>
+                <td>{{thursday.a5}}</td>
+                <td>{{thursday.b5}}</td>
+                <td>{{thursday.c5}}</td>
+                <td>{{thursday.a7}}</td>
+                <td>{{thursday.b7}}</td>
+                <td>{{thursday.c7}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tbody>
+                <th rowspan="7">Friday</th>
+                {% for friday in fridays %}
+                <tr>
+                    {% if loop.index0 == 0 %}
+                        <td>{{times[counter].lec1}}</td>
+                    {% elif loop.index0 == 1 %}
+                        <td>{{times[counter].lec2}}</td>
+                    {% elif loop.index0 == 2 %}
+                        <td>{{times[counter].lec3}}</td>
+                    {% elif loop.index0 == 3 %}
+                        <td>{{times[counter].lec4}}</td>
+                    {% elif loop.index0 == 4 %}
+                        <td>{{times[counter].lec5}}</td>
+                    {% else %}
+                        <td>{{times[counter].lec6}}</td>
+                    {% endif %}
+                <td>{{friday.a3}}</td>
+                <td>{{friday.b3}}</td>
+                <td>{{friday.c3}}</td>
+                <td>{{friday.a5}}</td>
+                <td>{{friday.b5}}</td>
+                <td>{{friday.c5}}</td>
+                <td>{{friday.a7}}</td>
+                <td>{{friday.b7}}</td>
+                <td>{{friday.c7}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </div>
+{% endblock %}

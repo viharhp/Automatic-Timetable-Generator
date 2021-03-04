@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Set time</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center" >Set time</h1>
+</div>
+
+<!-- Div blocks for adding faculty name -->
+<form action="/set-time" method="post">
+    <div class="container">
+    <label for="lec1">Lecture 1</label>
+    <input type="time" id="lec1" name="lec1" class="form-control" value="09:00" required>
+    </div>
+    <div class="container">
+    <label for="lec2">Lecture 2</label>
+    <input type="time" id="lec2" name="lec2" class="form-control" value="10:00" required>
+    </div>
+    <div class="container">
+    <label for="lec3">Lecture 3</label>
+    <input type="time" id="lec3" name="lec3" class="form-control" value="11:30" required>
+    </div>
+    <div class="container">
+    <label for="lec4">Lecture 4</label>
+    <input type="time" id="lec4" name="lec4" class="form-control" value="12:30" required>
+    </div>
+    <div class="container">
+    <label for="lec5">Lecture 5</label>
+    <input type="time" id="lec5" name="lec5" class="form-control" value="13:45" required>
+    </div>
+    <div class="container">
+    <label for="lec6">Lecture 6</label>
+    <input type="time" id="lec6" name="lec6" class="form-control" value="14:45" required>
+    </div>
+    <hr>
+    <div>
+        <!-- button type="button" won't submit form, default is submit -->
+        <button class="btn btn-success" type="submit">Save</button>
+    </div>
+</form>
+{% endblock %}

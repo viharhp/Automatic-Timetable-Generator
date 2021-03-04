@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///details.db'
+
 db = SQLAlchemy(app)
 
 class Subject(db.Model):
@@ -38,6 +40,99 @@ class Classroom(db.Model):
 
     def __repr__(self):
         return str(self.class_id)
+
+class Monday(db.Model):
+    m_id = db.Column(db.Integer, primary_key=True)
+    a3 = db.Column(db.String(40), nullable=False)
+    b3 = db.Column(db.String(40), nullable=False)
+    c3 = db.Column(db.String(40), nullable=False)
+    a5 = db.Column(db.String(40), nullable=False)
+    b5 = db.Column(db.String(40), nullable=False)
+    c5 = db.Column(db.String(40), nullable=False)
+    a7 = db.Column(db.String(40), nullable=False)
+    b7 = db.Column(db.String(40), nullable=False)
+    c7 = db.Column(db.String(40), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.m_id)
+
+class Tuesday(db.Model):
+    t_id = db.Column(db.Integer, primary_key=True)
+    a3 = db.Column(db.String(40), nullable=False)
+    b3 = db.Column(db.String(40), nullable=False)
+    c3 = db.Column(db.String(40), nullable=False)
+    a5 = db.Column(db.String(40), nullable=False)
+    b5 = db.Column(db.String(40), nullable=False)
+    c5 = db.Column(db.String(40), nullable=False)
+    a7 = db.Column(db.String(40), nullable=False)
+    b7 = db.Column(db.String(40), nullable=False)
+    c7 = db.Column(db.String(40), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.t_id)
+
+class Wednesday(db.Model):
+    w_id = db.Column(db.Integer, primary_key=True)
+    a3 = db.Column(db.String(40), nullable=False)
+    b3 = db.Column(db.String(40), nullable=False)
+    c3 = db.Column(db.String(40), nullable=False)
+    a5 = db.Column(db.String(40), nullable=False)
+    b5 = db.Column(db.String(40), nullable=False)
+    c5 = db.Column(db.String(40), nullable=False)
+    a7 = db.Column(db.String(40), nullable=False)
+    b7 = db.Column(db.String(40), nullable=False)
+    c7 = db.Column(db.String(40), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.w_id)
+
+class Thursday(db.Model):
+    th_id = db.Column(db.Integer, primary_key=True)
+    a3 = db.Column(db.String(40), nullable=False)
+    b3 = db.Column(db.String(40), nullable=False)
+    c3 = db.Column(db.String(40), nullable=False)
+    a5 = db.Column(db.String(40), nullable=False)
+    b5 = db.Column(db.String(40), nullable=False)
+    c5 = db.Column(db.String(40), nullable=False)
+    a7 = db.Column(db.String(40), nullable=False)
+    b7 = db.Column(db.String(40), nullable=False)
+    c7 = db.Column(db.String(40), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.th_id)
+
+class Friday(db.Model):
+    f_id = db.Column(db.Integer, primary_key=True)
+    a3 = db.Column(db.String(40), nullable=False)
+    b3 = db.Column(db.String(40), nullable=False)
+    c3 = db.Column(db.String(40), nullable=False)
+    a5 = db.Column(db.String(40), nullable=False)
+    b5 = db.Column(db.String(40), nullable=False)
+    c5 = db.Column(db.String(40), nullable=False)
+    a7 = db.Column(db.String(40), nullable=False)
+    b7 = db.Column(db.String(40), nullable=False)
+    c7 = db.Column(db.String(40), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.f_id)
+
+class Time(db.Model):
+    time_id = db.Column(db.Integer, primary_key=True)
+    lec1 = db.Column(db.String(10), nullable=False)
+    lec2 = db.Column(db.String(10), nullable=False)
+    lec3 = db.Column(db.String(10), nullable=False)
+    lec4 = db.Column(db.String(10), nullable=False)
+    lec5 = db.Column(db.String(10), nullable=False)
+    lec6 = db.Column(db.String(10), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.time_id)
 
 @app.route('/')
 def index():
@@ -162,9 +257,39 @@ def delete_faculty(id):
     db.session.commit()
     return redirect('/add-faculty')
 
-@app.route('/generate')
+@app.route('/set-time', methods=['GET','POST'])
+def set_time():
+    if request.method == "POST":
+        lec1 = request.form.get('lec1')
+        lec2 = request.form.get('lec2')
+        lec3 = request.form.get('lec3')
+        lec4 = request.form.get('lec4')
+        lec5 = request.form.get('lec5')
+        lec6 = request.form.get('lec6')
+        newtime = Time(lec1 = lec1, lec2 = lec2, lec3 = lec3, lec4 = lec4, lec5 = lec5, lec6 = lec6)
+        db.session.add(newtime)
+        db.session.commit()
+        return redirect('/set-time')
+    else:
+        return render_template('set-time.html')
+
+@app.route('/drop-table', methods=['GET','DELETE'])
+def drop_table(id):
+    del_faculty = Faculty.query.get_or_404(id)
+    db.session.delete(del_faculty)
+    db.session.commit()
+    return redirect('/add-faculty')
+
+@app.route('/generate', methods=['GET','POST'])
 def generate():
-        return render_template('generate.html')
+
+        timing = Time.query.order_by(Time.time_id).all()
+        monday_subjects = Monday.query.order_by(Monday.m_id).all()
+        tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
+        wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
+        thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
+        friday_subjects = Friday.query.order_by(Friday.f_id).all()
+        return render_template('generate.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
 @app.route('/view')
 def view():
