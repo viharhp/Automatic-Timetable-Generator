@@ -13,7 +13,7 @@ class Subject(db.Model):
     sub_code = db.Column(db.Integer, nullable=False)
     sub_sem = db.Column(db.Integer, nullable=False)
     sub_credits = db.Column(db.Integer, nullable=False)
-
+    is_lab = db.Column(db.Integer, nullable=False)
     def __repr__(self):
         # returns id as default name of row
         return str(self.id)
@@ -251,7 +251,8 @@ def add_sub():
         sub_name = request.form['subjectname']
         sub_code = request.form['subjectcode']
         sub_credits = request.form['subjectcredits']
-        new_subject = Subject(sub_sem=sub_sem, sub_name=sub_name, sub_code=sub_code, sub_credits=sub_credits)
+        is_lab = request.form['is_lab']
+        new_subject = Subject(sub_sem=sub_sem, sub_name=sub_name, sub_code=sub_code, sub_credits=sub_credits, is_lab = is_lab)
         db.session.add(new_subject) # added for this session only
         db.session.commit() # added permanently
         return redirect('/add-subject')
@@ -268,6 +269,7 @@ def edit_subject(id):
         subject.sub_name = request.form['subjectname']
         subject.sub_code = request.form['subjectcode']
         subject.sub_credits = request.form['subjectcredits']
+        subject.is_lab = request.form['is_lab']
         db.session.commit() # added permanently
         return redirect('/add-subject')
     else:
@@ -386,19 +388,19 @@ def drop_table(id):
     db.session.commit()
     return redirect('/add-faculty')
 
-@app.route('/generate', methods=['GET','POST'])
-def generate():
+@app.route('/view', methods=['GET','POST'])
+def view():
         timing = Time.query.order_by(Time.time_id).all()
         monday_subjects = Monday.query.order_by(Monday.m_id).all()
         tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
         wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
         thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
         friday_subjects = Friday.query.order_by(Friday.f_id).all()
-        return render_template('generate.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
+        return render_template('view.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
-@app.route('/view')
-def view():
-        return render_template('view.html')
+@app.route('/generate')
+def generate():
+        return render_template('generate.html')
 
 if __name__ == '__main__':
     # db.create.all()

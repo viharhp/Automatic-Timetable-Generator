@@ -45,6 +45,12 @@
       <input type="number" class="form-control" name="subjectcredits" id="subjectcredits" placeholder="Enter subject credits" required>
     </div>
   </div>
+  <div class="form-group row">
+    <label for="subjectcode" class="col-sm-2 col-form-label">Lab per week</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" name="is_lab" id="is_lab" placeholder="Lab per week" required>
+    </div>
+  </div>
   <div>
       <button class="btn btn-success" type="submit">Save</button>
   </div>
@@ -62,6 +68,7 @@
                 <b>Semester: </b> {{subject.sub_sem}}
                 <b>Code: </b> {{subject.sub_code}}
                 <b>Credits: </b>{{subject.sub_credits}}
+                <b>Lab per week: </b>{{subject.is_lab}}
                 <a class="btn btn-primary" href="/edit/subject/{{subject.id}}" >Edit</a>
                 <a class="btn btn-danger" href="/delete/subject/{{subject.id}}" >Delete</a>
                 <hr>
