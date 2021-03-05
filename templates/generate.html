@@ -17,15 +17,15 @@
               <tr>
                 <th>Day</th>
                 <th>Timing</th>
-                <th>A3</th>
-                <th>B3</th>
-                <th>C3</th>
-                <th>A5</th>
-                <th>B5</th>
-                <th>C5</th>
-                <th>A7</th>
-                <th>B7</th>
-                <th>C7</th>
+                <th>3A</th>
+                <th>3B</th>
+                <th>3C</th>
+                <th>5A</th>
+                <th>5B</th>
+                <th>5C</th>
+                <th>7A</th>
+                <th>7B</th>
+                <th>7C</th>
               </tr>
             </thead>
             <tbody>
@@ -35,27 +35,27 @@
                 {% for monday in mondays %}
                 <tr>
                     {% if loop.index0 == 0 %}
-                        <td>{{times[counter].lec1}}</td>
+                        <td>{{times[counter].lec1}} to {{times[counter].lec2}}</td>
                     {% elif loop.index0 == 1 %}
-                        <td>{{times[counter].lec2}}</td>
+                        <td>{{times[counter].lec2}} to {{times[counter].recess1}}</td>
                     {% elif loop.index0 == 2 %}
-                        <td>{{times[counter].lec3}}</td>
+                        <td>{{times[counter].lec3}} to {{times[counter].lec4}}</td>
                     {% elif loop.index0 == 3 %}
-                        <td>{{times[counter].lec4}}</td>
+                        <td>{{times[counter].lec4}} to {{times[counter].recess2}}</td>
                     {% elif loop.index0 == 4 %}
-                        <td>{{times[counter].lec5}}</td>
+                        <td>{{times[counter].lec5}} to {{times[counter].lec6}}</td>
                     {% else %}
-                        <td>{{times[counter].lec6}}</td>
+                        <td>{{times[counter].lec6}} to {{times[counter].end_time}} </td>
                     {% endif %}
-                    <td>{{monday.a3}}</td>
-                    <td>{{monday.b3}}</td>
-                    <td>{{monday.c3}}</td>
-                    <td>{{monday.a5}}</td>
-                    <td>{{monday.b5}}</td>
-                    <td>{{monday.c5}}</td>
-                    <td>{{monday.a7}}</td>
-                    <td>{{monday.b7}}</td>
-                    <td>{{monday.c7}}</td>
+                    <td>{{monday.afaculty3}} {{monday.asubject3}} {{monday.aclass3}} </td>
+                    <td>{{monday.bfaculty3}} {{monday.bsubject3}} {{monday.bclass3}}</td>
+                    <td>{{monday.cfaculty3}} {{monday.csubject3}} {{monday.cclass3}} </td>
+                    <td>{{monday.afaculty5}} {{monday.asubject5}} {{monday.aclass5}}</td>
+                    <td>{{monday.bfaculty5}} {{monday.bsubject5}} {{monday.bclass5}} </td>
+                    <td>{{monday.cfaculty5}} {{monday.csubject5}} {{monday.cclass5}}</td>
+                    <td>{{monday.afaculty7}} {{monday.asubject7}} {{monday.aclass7}} </td>
+                    <td>{{monday.bfaculty7}} {{monday.bsubject7}} {{monday.bclass7}}</td>
+                    <td>{{monday.bfaculty7}} {{monday.bsubject7}} {{monday.bclass7}}</td>
                 </tr>
                 {% endfor %}
 
@@ -65,27 +65,27 @@
                 {% for tuesday in tuesdays %}
                 <tr>
                     {% if loop.index0 == 0 %}
-                        <td>{{times[counter].lec1}}</td>
+                        <td>{{times[counter].lec1}} to {{times[counter].lec2}}</td>
                     {% elif loop.index0 == 1 %}
-                        <td>{{times[counter].lec2}}</td>
+                        <td>{{times[counter].lec2}} to {{times[counter].recess1}}</td>
                     {% elif loop.index0 == 2 %}
-                        <td>{{times[counter].lec3}}</td>
+                        <td>{{times[counter].lec3}} to {{times[counter].lec4}}</td>
                     {% elif loop.index0 == 3 %}
-                        <td>{{times[counter].lec4}}</td>
+                        <td>{{times[counter].lec4}} to {{times[counter].recess2}}</td>
                     {% elif loop.index0 == 4 %}
-                        <td>{{times[counter].lec5}}</td>
+                        <td>{{times[counter].lec5}} to {{times[counter].lec6}}</td>
                     {% else %}
-                        <td>{{times[counter].lec6}}</td>
+                        <td>{{times[counter].lec6}} to {{times[counter].end_time}} </td>
                     {% endif %}
-                <td>{{tuesday.a3}}</td>
-                <td>{{tuesday.b3}}</td>
-                <td>{{tuesday.c3}}</td>
-                <td>{{tuesday.a5}}</td>
-                <td>{{tuesday.b5}}</td>
-                <td>{{tuesday.c5}}</td>
-                <td>{{tuesday.a7}}</td>
-                <td>{{tuesday.b7}}</td>
-                <td>{{tuesday.c7}}</td>
+                    <td>{{tuesday.afaculty3}} {{tuesday.asubject3}} {{tuesday.aclass3}} </td>
+                    <td>{{tuesday.bfaculty3}} {{tuesday.bsubject3}} {{tuesday.bclass3}}</td>
+                    <td>{{tuesday.cfaculty3}} {{tuesday.csubject3}} {{tuesday.cclass3}} </td>
+                    <td>{{tuesday.afaculty5}} {{tuesday.asubject5}} {{tuesday.aclass5}}</td>
+                    <td>{{tuesday.bfaculty5}} {{tuesday.bsubject5}} {{tuesday.bclass5}} </td>
+                    <td>{{tuesday.cfaculty5}} {{tuesday.csubject5}} {{tuesday.cclass5}}</td>
+                    <td>{{tuesday.afaculty7}} {{tuesday.asubject7}} {{tuesday.aclass7}} </td>
+                    <td>{{tuesday.bfaculty7}} {{tuesday.bsubject7}} {{tuesday.bclass7}}</td>
+                    <td>{{tuesday.bfaculty7}} {{tuesday.bsubject7}} {{tuesday.bclass7}}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -94,27 +94,27 @@
                 {% for wednesday in wednesdays %}
                 <tr>
                     {% if loop.index0 == 0 %}
-                        <td>{{times[counter].lec1}}</td>
+                        <td>{{times[counter].lec1}} to {{times[counter].lec2}}</td>
                     {% elif loop.index0 == 1 %}
-                        <td>{{times[counter].lec2}}</td>
+                        <td>{{times[counter].lec2}} to {{times[counter].recess1}}</td>
                     {% elif loop.index0 == 2 %}
-                        <td>{{times[counter].lec3}}</td>
+                        <td>{{times[counter].lec3}} to {{times[counter].lec4}}</td>
                     {% elif loop.index0 == 3 %}
-                        <td>{{times[counter].lec4}}</td>
+                        <td>{{times[counter].lec4}} to {{times[counter].recess2}}</td>
                     {% elif loop.index0 == 4 %}
-                        <td>{{times[counter].lec5}}</td>
+                        <td>{{times[counter].lec5}} to {{times[counter].lec6}}</td>
                     {% else %}
-                        <td>{{times[counter].lec6}}</td>
+                        <td>{{times[counter].lec6}} to {{times[counter].end_time}} </td>
                     {% endif %}
-                <td>{{wednesday.a3}}</td>
-                <td>{{wednesday.b3}}</td>
-                <td>{{wednesday.c3}}</td>
-                <td>{{wednesday.a5}}</td>
-                <td>{{wednesday.b5}}</td>
-                <td>{{wednesday.c5}}</td>
-                <td>{{wednesday.a7}}</td>
-                <td>{{wednesday.b7}}</td>
-                <td>{{wednesday.c7}}</td>
+                    <td>{{wednesday.afaculty3}} {{wednesday.asubject3}} {{wednesday.aclass3}} </td>
+                    <td>{{wednesday.bfaculty3}} {{wednesday.bsubject3}} {{wednesday.bclass3}}</td>
+                    <td>{{wednesday.cfaculty3}} {{wednesday.csubject3}} {{wednesday.cclass3}} </td>
+                    <td>{{wednesday.afaculty5}} {{wednesday.asubject5}} {{wednesday.aclass5}}</td>
+                    <td>{{wednesday.bfaculty5}} {{wednesday.bsubject5}} {{wednesday.bclass5}} </td>
+                    <td>{{wednesday.cfaculty5}} {{wednesday.csubject5}} {{wednesday.cclass5}}</td>
+                    <td>{{wednesday.afaculty7}} {{wednesday.asubject7}} {{wednesday.aclass7}} </td>
+                    <td>{{wednesday.bfaculty7}} {{wednesday.bsubject7}} {{wednesday.bclass7}}</td>
+                    <td>{{wednesday.bfaculty7}} {{wednesday.bsubject7}} {{wednesday.bclass7}}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -123,27 +123,27 @@
                 {% for thursday in thursdays %}
                 <tr>
                     {% if loop.index0 == 0 %}
-                        <td>{{times[counter].lec1}}</td>
+                        <td>{{times[counter].lec1}} to {{times[counter].lec2}}</td>
                     {% elif loop.index0 == 1 %}
-                        <td>{{times[counter].lec2}}</td>
+                        <td>{{times[counter].lec2}} to {{times[counter].recess1}}</td>
                     {% elif loop.index0 == 2 %}
-                        <td>{{times[counter].lec3}}</td>
+                        <td>{{times[counter].lec3}} to {{times[counter].lec4}}</td>
                     {% elif loop.index0 == 3 %}
-                        <td>{{times[counter].lec4}}</td>
+                        <td>{{times[counter].lec4}} to {{times[counter].recess2}}</td>
                     {% elif loop.index0 == 4 %}
-                        <td>{{times[counter].lec5}}</td>
+                        <td>{{times[counter].lec5}} to {{times[counter].lec6}}</td>
                     {% else %}
-                        <td>{{times[counter].lec6}}</td>
+                        <td>{{times[counter].lec6}} to {{times[counter].end_time}} </td>
                     {% endif %}
-                <td>{{thursday.a3}}</td>
-                <td>{{thursday.b3}}</td>
-                <td>{{thursday.c3}}</td>
-                <td>{{thursday.a5}}</td>
-                <td>{{thursday.b5}}</td>
-                <td>{{thursday.c5}}</td>
-                <td>{{thursday.a7}}</td>
-                <td>{{thursday.b7}}</td>
-                <td>{{thursday.c7}}</td>
+                    <td>{{thursday.afaculty3}} {{thursday.asubject3}} {{thursday.aclass3}} </td>
+                    <td>{{thursday.bfaculty3}} {{thursday.bsubject3}} {{thursday.bclass3}}</td>
+                    <td>{{thursday.cfaculty3}} {{thursday.csubject3}} {{thursday.cclass3}} </td>
+                    <td>{{thursday.afaculty5}} {{thursday.asubject5}} {{thursday.aclass5}}</td>
+                    <td>{{thursday.bfaculty5}} {{thursday.bsubject5}} {{thursday.bclass5}} </td>
+                    <td>{{thursday.cfaculty5}} {{thursday.csubject5}} {{thursday.cclass5}}</td>
+                    <td>{{thursday.afaculty7}} {{thursday.asubject7}} {{thursday.aclass7}} </td>
+                    <td>{{thursday.bfaculty7}} {{thursday.bsubject7}} {{thursday.bclass7}}</td>
+                    <td>{{thursday.bfaculty7}} {{thursday.bsubject7}} {{thursday.bclass7}}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -152,27 +152,27 @@
                 {% for friday in fridays %}
                 <tr>
                     {% if loop.index0 == 0 %}
-                        <td>{{times[counter].lec1}}</td>
+                        <td>{{times[counter].lec1}} to {{times[counter].lec2}}</td>
                     {% elif loop.index0 == 1 %}
-                        <td>{{times[counter].lec2}}</td>
+                        <td>{{times[counter].lec2}} to {{times[counter].recess1}}</td>
                     {% elif loop.index0 == 2 %}
-                        <td>{{times[counter].lec3}}</td>
+                        <td>{{times[counter].lec3}} to {{times[counter].lec4}}</td>
                     {% elif loop.index0 == 3 %}
-                        <td>{{times[counter].lec4}}</td>
+                        <td>{{times[counter].lec4}} to {{times[counter].recess2}}</td>
                     {% elif loop.index0 == 4 %}
-                        <td>{{times[counter].lec5}}</td>
+                        <td>{{times[counter].lec5}} to {{times[counter].lec6}}</td>
                     {% else %}
-                        <td>{{times[counter].lec6}}</td>
+                        <td>{{times[counter].lec6}} to {{times[counter].end_time}} </td>
                     {% endif %}
-                <td>{{friday.a3}}</td>
-                <td>{{friday.b3}}</td>
-                <td>{{friday.c3}}</td>
-                <td>{{friday.a5}}</td>
-                <td>{{friday.b5}}</td>
-                <td>{{friday.c5}}</td>
-                <td>{{friday.a7}}</td>
-                <td>{{friday.b7}}</td>
-                <td>{{friday.c7}}</td>
+                    <td>{{friday.afaculty3}} {{friday.asubject3}} {{friday.aclass3}} </td>
+                    <td>{{friday.bfaculty3}} {{friday.bsubject3}} {{friday.bclass3}}</td>
+                    <td>{{friday.cfaculty3}} {{friday.csubject3}} {{friday.cclass3}} </td>
+                    <td>{{friday.afaculty5}} {{friday.asubject5}} {{friday.aclass5}}</td>
+                    <td>{{friday.bfaculty5}} {{friday.bsubject5}} {{friday.bclass5}} </td>
+                    <td>{{friday.cfaculty5}} {{friday.csubject5}} {{friday.cclass5}}</td>
+                    <td>{{friday.afaculty7}} {{friday.asubject7}} {{friday.aclass7}} </td>
+                    <td>{{friday.bfaculty7}} {{friday.bsubject7}} {{friday.bclass7}}</td>
+                    <td>{{friday.bfaculty7}} {{friday.bsubject7}} {{friday.bclass7}}</td>
                 </tr>
             {% endfor %}
             </tbody>
