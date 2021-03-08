@@ -10,9 +10,11 @@
 </div>
 
 <!-- Div blocks for adding faculty name -->
-<form action="/generate" method="post">
+<form action="/delete/timetable/{{table_name}}" method="post">
     <div class="container">
     <p>Empty!</p>
     </div>
-    
+    <div>
+        <button class="btn btn-danger" type="submit" href="/delete/subject/Faculty" > Clear Faculty</button>
+    </div>
 {% endblock %}
