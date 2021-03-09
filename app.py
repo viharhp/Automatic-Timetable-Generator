@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
-
+import generate
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///details.db'
-metadata = MetaData()
+
 db = SQLAlchemy(app)
 
 class Subject(db.Model):
@@ -398,23 +398,25 @@ def view():
         friday_subjects = Friday.query.order_by(Friday.f_id).all()
         return render_template('view.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
-@app.route('/delete/timetable/<string:table_name>', methods=['GET','POST'])
-def delete_timetable(table_name):
-    if request.method == "POST":
-        Base = declarative_base()
-        metadata = MetaData()
-        metadata.reflect(bind=engine)
-        table = metadata.tables[Faculty]
-        if table is not None:
-            Base.metadata.drop_all(engine, [table], checkfirst=True)
-        db.session.commit()
-        return redirect('/generate')
-    else:
-        return render_template('edit-timetable.html')
+@app.route('/edit/timetable', methods=['GET','POST'])
+def edit_timetable():
+    timing = Time.query.order_by(Time.time_id).all()
+    monday_subjects = Monday.query.order_by(Monday.m_id).all()
+    tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
+    wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
+    thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
+    friday_subjects = Friday.query.order_by(Friday.f_id).all()
+    return render_template('edit-timetable.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
-@app.route('/generate')
+
+
+@app.route('/generate', methods=['GET','POST'])
 def generate():
-        return render_template('generate.html')
+        if request.method == "POST":
+            # start = start()
+            return redirect('/view')
+        else:
+            return render_template('generate.html')
 
 if __name__ == '__main__':
     # db.create.all()
