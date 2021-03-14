@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
-import generate
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///details.db'
 
@@ -381,22 +381,15 @@ def set_time():
     else:
         return render_template('set-time.html')
 
-@app.route('/drop-table', methods=['GET','DELETE'])
-def drop_table(id):
-    del_faculty = Faculty.query.get_or_404(id)
-    db.session.delete(del_faculty)
-    db.session.commit()
-    return redirect('/add-faculty')
-
 @app.route('/view', methods=['GET','POST'])
 def view():
-        timing = Time.query.order_by(Time.time_id).all()
-        monday_subjects = Monday.query.order_by(Monday.m_id).all()
-        tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
-        wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
-        thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
-        friday_subjects = Friday.query.order_by(Friday.f_id).all()
-        return render_template('view.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
+    timing = Time.query.order_by(Time.time_id).all()
+    monday_subjects = Monday.query.order_by(Monday.m_id).all()
+    tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
+    wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
+    thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
+    friday_subjects = Friday.query.order_by(Friday.f_id).all()
+    return render_template('view.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
 @app.route('/edit/timetable', methods=['GET','POST'])
 def edit_timetable():
@@ -408,15 +401,54 @@ def edit_timetable():
     friday_subjects = Friday.query.order_by(Friday.f_id).all()
     return render_template('edit-timetable.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
-
+@app.route('/clear/tt', methods=['GET','POST'])
+def drop_tt():
+    monday_subjects = Monday.query.order_by(Monday.m_id).all()
+    tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
+    wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
+    thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
+    friday_subjects = Friday.query.order_by(Friday.f_id).all()
+    if request.method == "POST":
+        for monday in monday_subjects:
+            monday.asubject3 = "none"
+            monday.afaculty3 = "none"
+            monday.aclass3 = "none"
+            monday.bsubject3 = "none"
+            monday.bfaculty3 = "none"
+            monday.bclass3 = "none"
+            monday.csubject3 = "none"
+            monday.cfaculty3 = "none"
+            monday.cclass3 = "none"
+            monday.asubject5 = "none"
+            monday.afaculty5 = "none"
+            monday.aclass5 = "none"
+            monday.bsubject5 = "none"
+            monday.bfaculty5 = "none"
+            monday.bclass5 = "none"
+            monday.csubject5 = "none"
+            monday.cfaculty5 = "none"
+            monday.cclass5 = "none"
+            monday.asubject7 = "none"
+            monday.afaculty7 = "none"
+            monday.aclass7 = "none"
+            monday.bsubject7 = "none"
+            monday.bfaculty7 = "none"
+            monday.bclass7 = "none"
+            monday.csubject7 = "none"
+            monday.bfaculty3 = "none"
+            monday.bclass3 = "none"
+            db.session.commit()
+        return redirect('/view')
+    else:
+        return render_template('clear.html')
 
 @app.route('/generate', methods=['GET','POST'])
 def generate():
-        if request.method == "POST":
-            # start = start()
-            return redirect('/view')
-        else:
-            return render_template('generate.html')
+    if request.method == "POST":
+        # start = start()
+        return redirect('/view')
+    else:
+        return render_template('generate.html')
 
 if __name__ == '__main__':
     # db.create.all()

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Clear Timetable</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center" >Clear Timetable</h1>
+</div>
+
+<!-- Div blocks for adding faculty name -->
+<form action="/clear/tt" method="post">
+    <div class="container">
+        <button class="btn btn-danger"  type="submit" >Clear Timetable</button>
+    </div>
+</form>
+
+
+{% endblock %}
