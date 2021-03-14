@@ -1,13 +1,13 @@
 from flask_sqlalchemy import SQLAlchemy
 from app import db, Subject, Monday, Tuesday, Wednesday, Thursday, Friday, Faculty, Classroom
 
-monday_subjects = Monday.query.order_by(Monday.m_id).all()
-tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
-wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
-thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
-friday_subjects = Friday.query.order_by(Friday.f_id).all()
-
-def drop_tt():
+# all variables must be inside of definition if you want to access it ie. monday_subjects,tuesday_subjects etc
+def clearTimetable():
+    monday_subjects = Monday.query.order_by(Monday.m_id).all()
+    tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
+    wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
+    thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
+    friday_subjects = Friday.query.order_by(Friday.f_id).all()
     for monday in monday_subjects:
         monday.asubject3 = "none"
         monday.afaculty3 = "none"
@@ -18,7 +18,6 @@ def drop_tt():
         monday.csubject3 = "none"
         monday.cfaculty3 = "none"
         monday.cclass3 = "none"
-
         monday.asubject5 = "none"
         monday.afaculty5 = "none"
         monday.aclass5 = "none"
@@ -28,7 +27,6 @@ def drop_tt():
         monday.csubject5 = "none"
         monday.cfaculty5 = "none"
         monday.cclass5 = "none"
-
         monday.asubject7 = "none"
         monday.afaculty7 = "none"
         monday.aclass7 = "none"
@@ -36,8 +34,8 @@ def drop_tt():
         monday.bfaculty7 = "none"
         monday.bclass7 = "none"
         monday.csubject7 = "none"
-        monday.bfaculty3 = "none"
-        monday.bclass3 = "none"
+        monday.cfaculty7 = "none"
+        monday.cclass7 = "none"
         db.session.commit()
     for tuesday in tuesday_subjects:
         tuesday.asubject3 = "none"
@@ -49,7 +47,6 @@ def drop_tt():
         tuesday.csubject3 = "none"
         tuesday.cfaculty3 = "none"
         tuesday.cclass3 = "none"
-
         tuesday.asubject5 = "none"
         tuesday.afaculty5 = "none"
         tuesday.aclass5 = "none"
@@ -59,7 +56,6 @@ def drop_tt():
         tuesday.csubject5 = "none"
         tuesday.cfaculty5 = "none"
         tuesday.cclass5 = "none"
-
         tuesday.asubject7 = "none"
         tuesday.afaculty7 = "none"
         tuesday.aclass7 = "none"
@@ -67,39 +63,8 @@ def drop_tt():
         tuesday.bfaculty7 = "none"
         tuesday.bclass7 = "none"
         tuesday.csubject7 = "none"
-        tuesday.bfaculty3 = "none"
-        tuesday.bclass3 = "none"
-        db.session.commit()
-    for tuesday in tuesday_subjects:
-        tuesday.asubject3 = "none"
-        tuesday.afaculty3 = "none"
-        tuesday.aclass3 = "none"
-        tuesday.bsubject3 = "none"
-        tuesday.bfaculty3 = "none"
-        tuesday.bclass3 = "none"
-        tuesday.csubject3 = "none"
-        tuesday.cfaculty3 = "none"
-        tuesday.cclass3 = "none"
-
-        tuesday.asubject5 = "none"
-        tuesday.afaculty5 = "none"
-        tuesday.aclass5 = "none"
-        tuesday.bsubject5 = "none"
-        tuesday.bfaculty5 = "none"
-        tuesday.bclass5 = "none"
-        tuesday.csubject5 = "none"
-        tuesday.cfaculty5 = "none"
-        tuesday.cclass5 = "none"
-
-        tuesday.asubject7 = "none"
-        tuesday.afaculty7 = "none"
-        tuesday.aclass7 = "none"
-        tuesday.bsubject7 = "none"
-        tuesday.bfaculty7 = "none"
-        tuesday.bclass7 = "none"
-        tuesday.csubject7 = "none"
-        tuesday.bfaculty3 = "none"
-        tuesday.bclass3 = "none"
+        tuesday.cfaculty7 = "none"
+        tuesday.cclass7 = "none"
         db.session.commit()
     for wednesday in wednesday_subjects:
         wednesday.asubject3 = "none"
@@ -111,7 +76,6 @@ def drop_tt():
         wednesday.csubject3 = "none"
         wednesday.cfaculty3 = "none"
         wednesday.cclass3 = "none"
-
         wednesday.asubject5 = "none"
         wednesday.afaculty5 = "none"
         wednesday.aclass5 = "none"
@@ -121,7 +85,6 @@ def drop_tt():
         wednesday.csubject5 = "none"
         wednesday.cfaculty5 = "none"
         wednesday.cclass5 = "none"
-
         wednesday.asubject7 = "none"
         wednesday.afaculty7 = "none"
         wednesday.aclass7 = "none"
@@ -129,10 +92,9 @@ def drop_tt():
         wednesday.bfaculty7 = "none"
         wednesday.bclass7 = "none"
         wednesday.csubject7 = "none"
-        wednesday.bfaculty3 = "none"
-        wednesday.bclass3 = "none"
+        wednesday.cfaculty7 = "none"
+        wednesday.cclass7 = "none"
         db.session.commit()
-
     for thursday in thursday_subjects:
         thursday.asubject3 = "none"
         thursday.afaculty3 = "none"
@@ -143,7 +105,6 @@ def drop_tt():
         thursday.csubject3 = "none"
         thursday.cfaculty3 = "none"
         thursday.cclass3 = "none"
-
         thursday.asubject5 = "none"
         thursday.afaculty5 = "none"
         thursday.aclass5 = "none"
@@ -153,7 +114,6 @@ def drop_tt():
         thursday.csubject5 = "none"
         thursday.cfaculty5 = "none"
         thursday.cclass5 = "none"
-
         thursday.asubject7 = "none"
         thursday.afaculty7 = "none"
         thursday.aclass7 = "none"
@@ -161,10 +121,9 @@ def drop_tt():
         thursday.bfaculty7 = "none"
         thursday.bclass7 = "none"
         thursday.csubject7 = "none"
-        thursday.bfaculty3 = "none"
-        thursday.bclass3 = "none"
+        thursday.cfaculty7 = "none"
+        thursday.cclass7 = "none"
         db.session.commit()
-
     for friday in friday_subjects:
         friday.asubject3 = "none"
         friday.afaculty3 = "none"
@@ -175,7 +134,6 @@ def drop_tt():
         friday.csubject3 = "none"
         friday.cfaculty3 = "none"
         friday.cclass3 = "none"
-
         friday.asubject5 = "none"
         friday.afaculty5 = "none"
         friday.aclass5 = "none"
@@ -185,7 +143,6 @@ def drop_tt():
         friday.csubject5 = "none"
         friday.cfaculty5 = "none"
         friday.cclass5 = "none"
-
         friday.asubject7 = "none"
         friday.afaculty7 = "none"
         friday.aclass7 = "none"
@@ -193,7 +150,6 @@ def drop_tt():
         friday.bfaculty7 = "none"
         friday.bclass7 = "none"
         friday.csubject7 = "none"
-        friday.bfaculty3 = "none"
-        friday.bclass3 = "none"
+        friday.cfaculty7 = "none"
+        friday.cclass7 = "none"
         db.session.commit()
-drop_tt()
