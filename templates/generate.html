@@ -5,13 +5,20 @@
 {% endblock %}
 
 {% block body %}
+<br>
 <div class="container">
-    <h1 style="text-align:center" >Timetable</h1>
+    <h1 style="text-align:center" >Generate Timetable</h1>
 </div>
-
+<br>
 <!-- Div blocks for adding faculty name -->
 <form action="/generate" method="post">
     <div class="container">
+        <ul>
+            <b>Before generating new timetable:</b>
+            <li>Make sure to clear the old Timetable.</li>
+            <li>Make sure you have filled all the data required.</li>
+        </ul>
+        <hr>
         <button class="btn btn-success" type="submit" >Generate</button>
     </div>
 </form>

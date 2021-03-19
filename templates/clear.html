@@ -5,13 +5,18 @@
 {% endblock %}
 
 {% block body %}
+<br>
 <div class="container">
     <h1 style="text-align:center" >Clear Timetable</h1>
 </div>
-
+<br>
 <!-- Div blocks for adding faculty name -->
 <form action="/clear/tt" method="post">
     <div class="container">
+        <p>
+            Before generating new timetable, Make sure to clear the old Timetable.
+        </p>
+        <hr>
         <button class="btn btn-danger"  type="submit" >Clear Timetable</button>
     </div>
 </form>
