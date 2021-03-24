@@ -19,6 +19,14 @@ class Subject(db.Model):
         # returns id as default name of row
         return str(self.id)
 
+class Notification(db.Model):
+    notification_id = db.Column(db.Integer, primary_key=True)
+    notification_msg = db.Column(db.String(200), nullable=False)
+
+    def __repr__(self):
+        # returns id as default name of row
+        return str(self.notification_id)
+
 class Faculty(db.Model):
     faculty_id = db.Column(db.Integer, primary_key=True)
     faculty_name = db.Column(db.String(40), nullable=False)
@@ -41,6 +49,22 @@ class Classroom(db.Model):
 
     def __repr__(self):
         return str(self.class_id)
+
+class Semester(db.Model):
+    sem_id = db.Column(db.Integer, primary_key=True)
+    sem_type =  db.Column(db.String(10), nullable=False)
+    class1 = db.Column(db.String(10), nullable=False)
+    class2 = db.Column(db.String(10), nullable=False)
+    class3 = db.Column(db.String(10), nullable=False)
+    class4 = db.Column(db.String(10), nullable=False)
+    class5 = db.Column(db.String(10), nullable=False)
+    class6 = db.Column(db.String(10), nullable=False)
+    class7 = db.Column(db.String(10), nullable=False)
+    class8 = db.Column(db.String(10), nullable=False)
+    class9 = db.Column(db.String(10), nullable=False)
+
+    def __repr__(self):
+        return str(self.sem_id)
 
 class Monday(db.Model):
     m_id = db.Column(db.Integer, primary_key=True)
@@ -239,11 +263,28 @@ class Time(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    db.create_all()
+    new_semester = Semester(sem_type = "odd", class1 = "3A", class2 = "3B", class3 = "3C", class4 = "5A", class5 = "5B", class6 = "5C", class7 = "7A", class8 = "7B", class9 = "7C")
+    db.session.add(new_semester)
+    new_notification = Notification(notification_msg = '')
+    db.session.add(new_notification)
+    db.session.commit()
+    notification = Notification.query.get(1)
+    return render_template('index.html', notification = notification)
 
 @app.route('/login')
 def login():
-        return render_template('login.html')
+    return render_template('login.html')
+
+@app.route('/add-notification', methods=['GET','POST'])
+def add_notification():
+    notification = Notification.query.get(1)
+    if request.method == "POST":
+        notification.notification_msg = request.form['notification_msg']
+        db.session.commit()
+        return redirect('/')
+    else:
+        return render_template('add-notification.html', notification = notification)
 
 @app.route('/add-subject', methods=['GET','POST'])
 def add_sub():
@@ -381,16 +422,6 @@ def set_time():
         return redirect('/set-time')
     else:
         return render_template('set-time.html')
-
-@app.route('/view', methods=['GET','POST'])
-def view():
-    timing = Time.query.order_by(Time.time_id).all()
-    monday_subjects = Monday.query.order_by(Monday.m_id).all()
-    tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
-    wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
-    thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
-    friday_subjects = Friday.query.order_by(Friday.f_id).all()
-    return render_template('view.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing)
 
 @app.route('/edit/timetable', methods=['GET','POST'])
 def edit_timetable():
@@ -561,11 +592,48 @@ def cleartt():
 
 @app.route('/generate', methods=['GET','POST'])
 def generate():
+
+    semester = Semester.query.get_or_404(1) #gets first row of Semester
     if request.method == "POST":
+        semester_type = request.form.get('sem_type')
+        if semester_type == "odd":
+            semester.sem_type = request.form.get('sem_type')
+            semester.class1 = "3A"
+            semester.class2 = "3B"
+            semester.class3 = "3C"
+            semester.class4 = "5A"
+            semester.class5 = "5B"
+            semester.class6 = "5C"
+            semester.class7 = "7A"
+            semester.class8 = "7B"
+            semester.class9 = "7C"
+        else:
+            semester.sem_type = request.form.get('sem_type')
+            semester.class1 = "4A"
+            semester.class2 = "4B"
+            semester.class3 = "4C"
+            semester.class4 = "6A"
+            semester.class5 = "6B"
+            semester.class6 = "6C"
+            semester.class7 = "8A"
+            semester.class8 = "8B"
+            semester.class9 = "8C"
+        db.session.commit()
         timetable()
         return redirect('/view')
     else:
         return render_template('generate.html')
+
+@app.route('/view', methods=['GET','POST'])
+def view():
+    timing = Time.query.order_by(Time.time_id).all()
+    monday_subjects = Monday.query.order_by(Monday.m_id).all()
+    tuesday_subjects = Tuesday.query.order_by(Tuesday.t_id).all()
+    wednesday_subjects = Wednesday.query.order_by(Wednesday.w_id).all()
+    thursday_subjects = Thursday.query.order_by(Thursday.th_id).all()
+    friday_subjects = Friday.query.order_by(Friday.f_id).all()
+    semester = Semester.query.get(1)
+    return render_template('view.html', mondays = monday_subjects, tuesdays = tuesday_subjects, wednesdays = wednesday_subjects , thursdays = thursday_subjects, fridays = friday_subjects, times = timing, semester = semester)
 
 if __name__ == '__main__':
     # db.create.all()

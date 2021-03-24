@@ -1,7 +1,7 @@
 import random
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from app import db, Subject, Monday, Tuesday, Wednesday, Thursday, Friday, Faculty, Classroom
+from app import db, Subject, Monday, Tuesday, Wednesday, Thursday, Friday, Faculty, Classroom, Semester
 
 
 def timetable():
@@ -15,6 +15,7 @@ def timetable():
     all_subjects = Subject.query.order_by(Subject.id).all()
     all_class = Classroom.query.order_by(Classroom.class_id).all()
 
+    semester = Semester.query.get_or_404(1)    # gets 1st row of Semester table
     # subject list sem wise
     sublist_sem3a = []
     subcredits_sem3a = []

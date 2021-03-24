@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Timetable</title>
+<title>Generate timetable</title>
 {% endblock %}
 
 {% block body %}
@@ -18,6 +18,12 @@
             <li>Make sure to clear the old Timetable.</li>
             <li>Make sure you have filled all the data required.</li>
         </ul>
+        <hr>
+        <p>Select semester type:</p>
+        <select class="custom-select" name="sem_type" id="sem_type">
+            <option value="odd">Odd</option>
+            <option value="even">Even</option>
+        </select>
         <hr>
         <button class="btn btn-success" type="submit" >Generate</button>
     </div>
